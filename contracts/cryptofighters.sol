@@ -128,43 +128,5 @@ contract CryptoFighters is ERC721 {
     CharacterAttributes storage player = nftHolderAttributes[
       nftTokenIdOfPlayer
     ];
-
-    console.log(
-      "\nPlayer w/ character %s about to attack. Has %s HP and %s AD",
-      player.name,
-      player.hp,
-      player.attackDamage
-    );
-    console.log(
-      "Boss %s has %s HP and %s AD",
-      bigBoss.name,
-      bigBoss.hp,
-      bigBoss.attackDamage
-    );
-
-    require(player.hp > 0, "Error: character must have HP to attack boss.");
-
-    require(bigBoss.hp > 0, "Error: boss must have HP to attack boss.");
-
-    if (bigBoss.hp < player.attackDamage) {
-      bigBoss.hp = 0;
-    } else if (bigBoss.hp % 4 == 2) {
-      bigBoss.hp = bigBoss.hp - (2 * player.attackDamage);
-    } else {
-      bigBoss.hp = bigBoss.hp - player.attackDamage;
-    }
-
-    if (player.hp < bigBoss.attackDamage) {
-      player.hp = 0;
-    } else if (bigBoss.hp % 2 == 1) {
-      player.hp = player.hp;
-    } else {
-      player.hp = player.hp - bigBoss.attackDamage;
-    }
-
-    console.log("Player attacked boss. New boss hp: %s", bigBoss.hp);
-    console.log("Boss attacked player. New player hp: %s\n", player.hp);
-
-    emit AttackComplete(bigBoss.hp, player.hp);
   }
 }
