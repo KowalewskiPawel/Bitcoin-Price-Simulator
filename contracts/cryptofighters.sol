@@ -93,7 +93,7 @@ contract CryptoFighters is ERC721 {
     }
   }
 
-  function getBitcoinPrice() public view returns (bitcoinPrice) {
+  function getBitcoinPrice() public view returns (uint256) {
     return bitcoinPrice;
   }
 
@@ -121,7 +121,7 @@ contract CryptoFighters is ERC721 {
     emit CharacterNFTMinted(msg.sender, newItemId);
   }
 
-  function attackBoss() public {
+  function buyBitcoin() public {
     uint256 nftTokenIdOfPlayer = nftHolders[msg.sender];
     CharacterAttributes storage player = nftHolderAttributes[
       nftTokenIdOfPlayer
