@@ -114,8 +114,6 @@ contract CryptoFighters is ERC721 {
       bitcoins: 0
     });
 
-    console.log("Minted NFT w/ tokenId %s", newItemId);
-
     nftHolders[msg.sender] = newItemId;
 
     _tokenIds.increment();
